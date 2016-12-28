@@ -42,11 +42,8 @@
     <ObjcBindingCoreSource Include="Structs.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Original\ApiDefSave.cs" />
-    <None Include="Original\StructSave.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Original\" />
+    <None Include="ApiDefinitionUnmodified.cs" />
+    <None Include="StructsUnmodified.cs" />
   </ItemGroup>
   <ItemGroup>
     <NativeReference Include="..\Original\libFSCalendar.a">

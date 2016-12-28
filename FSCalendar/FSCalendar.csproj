@@ -46,13 +46,13 @@
     <None Include="Original\StructSave.cs" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="..\..\..\FSCalendar\libFSCalendar.a">
+    <Folder Include="Original\" />
+  </ItemGroup>
+  <ItemGroup>
+    <NativeReference Include="..\Original\libFSCalendar.a">
       <Kind>Static</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Original\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>

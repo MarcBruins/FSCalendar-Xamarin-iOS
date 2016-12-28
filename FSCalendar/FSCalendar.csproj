@@ -46,7 +46,7 @@
     <None Include="StructsUnmodified.cs" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="..\Original\libFSCalendar.a">
+    <NativeReference Include="..\..\..\FSCalendar\libFSCalendar.a">
       <Kind>Static</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>

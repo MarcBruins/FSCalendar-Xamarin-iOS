@@ -1,5 +1,6 @@
 ﻿using System;
 using UIKit;
+using WenchaoD.FSCalendar;
 
 namespace Sample
 {
@@ -13,8 +14,8 @@ namespace Sample
         public override void LoadView()
         {
             base.LoadView();
-           // ObjCRuntime.Class.ThrowOnInitFailure = false;
-           
+            // ObjCRuntime.Class.ThrowOnInitFailure = false;
+
         }
 
         public override void ViewDidLoad()

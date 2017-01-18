@@ -40,4 +40,12 @@ Global
 		{7B4C9929-9031-4017-B01D-B3F7ADCDF796}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{7B4C9929-9031-4017-B01D-B3F7ADCDF796}.Debug|iPhone.Build.0 = Debug|iPhone
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.FileWidth = 120
+		$1.inheritsSet = VisualStudio
+		$1.inheritsScope = text/plain
+		$1.scope = text/plain
+	EndGlobalSection
 EndGlobal

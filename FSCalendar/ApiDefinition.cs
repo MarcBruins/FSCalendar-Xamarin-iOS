@@ -840,8 +840,8 @@ interface FSCalendar
     nfloat LineHeightMultiplier { get; set; }
 
     // @property (readonly, nonatomic) FSCalendarAppearance * _Nonnull appearance;
-    //[Export("appearance")]
-    //FSCalendarAppearance Appearance { get; }
+    [Export("appearance")]
+    FSCalendarAppearance CalendarAppearance { get; }
 
     // @property (readonly, nonatomic) NSDate * _Nonnull minimumDate;
     [Export("minimumDate")]
@@ -914,6 +914,7 @@ interface FSCalendar
 
 // @interface IBExtension (FSCalendar)
 [BaseType(typeof(FSCalendar))]
+[Protocol]
 interface FSCalendar_IBExtension
 {
 }
@@ -1129,6 +1130,7 @@ interface FSCalendarCalculator
 
 // @interface FSCalendarDelegateProxy : NSObject
 [BaseType(typeof(NSObject))]
+[Protocol]
 interface FSCalendarDelegateProxy
 {
     // @property (nonatomic, weak) FSCalendar * calendar;
@@ -1303,6 +1305,7 @@ interface FSCalendarStickyHeader
 
 // @interface Dynamic (FSCalendar)
 [BaseType(typeof(FSCalendar))]
+[Protocol]
 interface FSCalendar_Dynamic
 {
     // @property (readonly, nonatomic) FSCalendarCollectionView * collectionView;
@@ -1416,6 +1419,7 @@ interface FSCalendar_Dynamic
 
 // @interface Dynamic (FSCalendarAppearance)
 [BaseType(typeof(FSCalendarAppearance))]
+[Protocol]
 interface FSCalendarAppearance_Dynamic
 {
     // @property (readwrite, nonatomic) FSCalendar * calendar;
@@ -1465,6 +1469,7 @@ interface FSCalendarAppearance_Dynamic
 
 // @interface FSCalendarExtensions (UIView)
 [BaseType(typeof(UIView))]
+[Protocol]
 interface UIView_FSCalendarExtensions
 {
     // @property (nonatomic) CGFloat fs_width;
@@ -1494,6 +1499,7 @@ interface UIView_FSCalendarExtensions
 
 // @interface FSCalendarExtensions (CALayer)
 [BaseType(typeof(CALayer))]
+[Protocol]
 interface CALayer_FSCalendarExtensions
 {
     // @property (nonatomic) CGFloat fs_width;
@@ -1523,6 +1529,7 @@ interface CALayer_FSCalendarExtensions
 
 // @interface FSCalendarExtensions (NSCalendar)
 [BaseType(typeof(NSCalendar))]
+[Protocol]
 interface NSCalendar_FSCalendarExtensions
 {
     // -(NSDate * _Nullable)fs_firstDayOfMonth:(NSDate * _Nonnull)month;
@@ -1557,6 +1564,7 @@ interface NSCalendar_FSCalendarExtensions
 
 // @interface FSCalendarExtensions (NSCache)
 [BaseType(typeof(NSCache))]
+[Protocol]
 interface NSCache_FSCalendarExtensions
 {
     // -(void)setObject:(id _Nullable)obj forKeyedSubscript:(id<NSCopying> _Nonnull)key;
@@ -1570,6 +1578,7 @@ interface NSCache_FSCalendarExtensions
 
 // @interface FSCalendarExtensions (NSObject)
 [BaseType(typeof(NSObject))]
+[Protocol]
 interface NSObject_FSCalendarExtensions
 {
     // -(void)fs_setVariable:(id _Nonnull)variable forKey:(NSString * _Nonnull)key;

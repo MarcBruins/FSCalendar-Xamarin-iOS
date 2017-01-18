@@ -77,6 +77,7 @@
 		49E195391E13E274006AA507 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49E1953B1E13E278006AA507 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		49E1953D1E13E283006AA507 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6B142A811E2EEDA6005EC143 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +153,7 @@
 		49E195381E13E274006AA507 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6B142A811E2EEDA6005EC143 /* QuartzCore.framework */,
 				49E1953D1E13E283006AA507 /* CoreGraphics.framework */,
 				49E1953B1E13E278006AA507 /* UIKit.framework */,
 				49E195391E13E274006AA507 /* Foundation.framework */,
@@ -329,18 +331,22 @@
 		49E195061E13E1B3006AA507 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "$(ARCHS_STANDARD) x86_64 armv7s";
 			};
 			name = Debug;
 		};
 		49E195071E13E1B3006AA507 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "$(ARCHS_STANDARD) x86_64 armv7s";
 			};
 			name = Release;
 		};
@@ -363,6 +369,7 @@
 				49E195071E13E1B3006AA507 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

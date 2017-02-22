@@ -2,6 +2,8 @@
 using Foundation;
 using ObjCRuntime;
 
+namespace WenchaoD.FSCalendar
+{
     [Native]
     public enum FSCalendarFlow : long
     {
@@ -100,3 +102,4 @@ using ObjCRuntime;
         dle,
         nProgress
     }
+}

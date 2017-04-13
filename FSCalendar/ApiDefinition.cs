@@ -597,55 +597,72 @@ namespace WenchaoD.FSCalendar
     interface FSCalendarDelegate
     {
         // @optional -(BOOL)calendar:(FSCalendar * _Nonnull)calendar shouldSelectDate:(NSDate * _Nonnull)date atMonthPosition:(FSCalendarMonthPosition)monthPosition;
-        [Export("calendar:shouldSelectDate:atMonthPosition:")]
-        bool ShouldSelectDate(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition);
+        [Export("calendar:shouldSelectDate:atMonthPosition:")
+         , DelegateName("FSCalendarDateAtMonthPositionDelegate")
+         , DefaultValue(true)]
+        bool ShouldSelectDateAtMonthPosition(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition);
 
         // @optional -(BOOL)calendar:(FSCalendar * _Nonnull)calendar shouldSelectDate:(NSDate * _Nonnull)date __attribute__((deprecated(" Use -calendar:shouldSelectDate:atMonthPosition: instead")));
-        [Export("calendar:shouldSelectDate:")]
+        [Export("calendar:shouldSelectDate:")
+         , DelegateName("FSCalendarDateDelegate")
+         , DefaultValue(true)]
         bool ShouldSelectDate(FSCalendar calendar, NSDate date);
 
         // @optional -(void)calendar:(FSCalendar * _Nonnull)calendar didSelectDate:(NSDate * _Nonnull)date atMonthPosition:(FSCalendarMonthPosition)monthPosition;
-        [Export("calendar:didSelectDate:atMonthPosition:")]
-        void DidSelectDate(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition);
+        [Export("calendar:didSelectDate:atMonthPosition:")
+         , EventArgs("FSCalendarDateWithPosition")]
+        void DidSelectDateAtMonthPosition(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition);
 
         // @optional -(void)calendar:(FSCalendar * _Nonnull)calendar didSelectDate:(NSDate * _Nonnull)date __attribute__((deprecated(" Use -calendar:didSelectDate:atMonthPosition: instead")));
-        [Export("calendar:didSelectDate:")]
+        [Export("calendar:didSelectDate:")
+         , EventArgs("FSCalendarDate")]
         void DidSelectDate(FSCalendar calendar, NSDate date);
 
         // @optional -(BOOL)calendar:(FSCalendar * _Nonnull)calendar shouldDeselectDate:(NSDate * _Nonnull)date atMonthPosition:(FSCalendarMonthPosition)monthPosition;
-        [Export("calendar:shouldDeselectDate:atMonthPosition:")]
-        bool ShouldDeselectDate(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition);
+        [Export("calendar:shouldDeselectDate:atMonthPosition:")
+         , DelegateName("FSCalendarDateAtMonthPositionDelegate")
+         , DefaultValue(true)]
+        bool ShouldDeselectDateAtMonthPosition(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition);
 
         // @optional -(BOOL)calendar:(FSCalendar * _Nonnull)calendar shouldDeselectDate:(NSDate * _Nonnull)date __attribute__((deprecated(" Use -calendar:shouldDeselectDate:atMonthPosition: instead")));
-        [Export("calendar:shouldDeselectDate:")]
+        [Export("calendar:shouldDeselectDate:")
+         , DelegateName("FSCalendarDateDelegate")
+         , DefaultValue(true)]
         bool ShouldDeselectDate(FSCalendar calendar, NSDate date);
 
         // @optional -(void)calendar:(FSCalendar * _Nonnull)calendar didDeselectDate:(NSDate * _Nonnull)date atMonthPosition:(FSCalendarMonthPosition)monthPosition;
-        [Export("calendar:didDeselectDate:atMonthPosition:")]
-        void DidDeselectDate(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition);
+        [Export("calendar:didDeselectDate:atMonthPosition:")
+         , EventArgs("FSCalendarDateWithPosition")]
+        void DidDeselectDateAtMonthPosition(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition);
 
         // @optional -(void)calendar:(FSCalendar * _Nonnull)calendar didDeselectDate:(NSDate * _Nonnull)date __attribute__((deprecated(" Use -calendar:didDeselectDate:atMonthPosition: instead")));
-        [Export("calendar:didDeselectDate:")]
+        [Export("calendar:didDeselectDate:")
+         , EventArgs("FSCalendarDate")]
         void DidDeselectDate(FSCalendar calendar, NSDate date);
 
         // @optional -(void)calendar:(FSCalendar * _Nonnull)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated;
-        [Export("calendar:boundingRectWillChange:animated:")]
+        [Export("calendar:boundingRectWillChange:animated:")
+         , EventArgs("BoundingRect")]
         void BoundingRectWillChange(FSCalendar calendar, CGRect bounds, bool animated);
 
         // @optional -(void)calendar:(FSCalendar * _Nonnull)calendar willDisplayCell:(FSCalendarCell * _Nonnull)cell forDate:(NSDate * _Nonnull)date atMonthPosition:(FSCalendarMonthPosition)monthPosition;
-        [Export("calendar:willDisplayCell:forDate:atMonthPosition:")]
+        [Export("calendar:willDisplayCell:forDate:atMonthPosition:")
+         , EventArgs("FSCalendarCell")]
         void WillDisplayCell(FSCalendar calendar, FSCalendarCell cell, NSDate date, FSCalendarMonthPosition monthPosition);
 
         // @optional -(void)calendarCurrentPageDidChange:(FSCalendar * _Nonnull)calendar;
-        [Export("calendarCurrentPageDidChange:")]
+        [Export("calendarCurrentPageDidChange:")
+         , EventArgs("FSCalendarChange")]
         void CalendarCurrentPageDidChange(FSCalendar calendar);
 
         // @optional -(void)calendarCurrentScopeWillChange:(FSCalendar * _Nonnull)calendar animated:(BOOL)animated __attribute__((deprecated(" Use -calendar:boundingRectWillChange:animated: instead")));
-        [Export("calendarCurrentScopeWillChange:animated:")]
+        [Export("calendarCurrentScopeWillChange:animated:")
+         , EventArgs("FSCalendarChangeAnimated")]
         void CalendarCurrentScopeWillChange(FSCalendar calendar, bool animated);
 
         // @optional -(void)calendarCurrentMonthDidChange:(FSCalendar * _Nonnull)calendar __attribute__((deprecated(" Use -calendarCurrentPageDidChange: instead")));
-        [Export("calendarCurrentMonthDidChange:")]
+        [Export("calendarCurrentMonthDidChange:")
+         , EventArgs("FSCalendarChange")]
         void CalendarCurrentMonthDidChange(FSCalendar calendar);
     }
 
@@ -750,7 +767,9 @@ namespace WenchaoD.FSCalendar
     }
 
     // @interface FSCalendar : UIView
-    [BaseType(typeof(UIView))]
+    [BaseType(typeof(UIView)
+              , Delegates = new string[] { "WeakDelegate" }
+              , Events = new Type[] { typeof(FSCalendarDelegate) })]
     interface FSCalendar
     {
         [Wrap("WeakDelegate")]
@@ -912,6 +931,14 @@ namespace WenchaoD.FSCalendar
         // -(CGRect)frameForDate:(NSDate * _Nonnull)date;
         [Export("frameForDate:")]
         CGRect FrameForDate(NSDate date);
+
+        // -(void)setNeedsConfigureAppearance;
+        [Export("setNeedsConfigureAppearance")]
+        void SetNeedsConfigureAppearance();
+
+        // -(void)handleScopeGesture:(UIPanGestureRecognizer * _Nonnull)sender;
+        [Export("handleScopeGesture:")]
+        void HandleScopeGesture(UIPanGestureRecognizer sender);
     }
 
     // @interface IBExtension (FSCalendar)

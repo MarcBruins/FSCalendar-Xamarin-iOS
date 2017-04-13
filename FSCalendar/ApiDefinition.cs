@@ -931,6 +931,14 @@ namespace WenchaoD.FSCalendar
         // -(CGRect)frameForDate:(NSDate * _Nonnull)date;
         [Export("frameForDate:")]
         CGRect FrameForDate(NSDate date);
+
+        // -(void)setNeedsConfigureAppearance;
+        [Export("setNeedsConfigureAppearance")]
+        void SetNeedsConfigureAppearance();
+
+        // -(void)handleScopeGesture:(UIPanGestureRecognizer * _Nonnull)sender;
+        [Export("handleScopeGesture:")]
+        void HandleScopeGesture(UIPanGestureRecognizer sender);
     }
 
     // @interface IBExtension (FSCalendar)

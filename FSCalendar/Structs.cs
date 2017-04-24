@@ -5,13 +5,6 @@ using ObjCRuntime;
 namespace WenchaoD.FSCalendar
 {
     [Native]
-    public enum FSCalendarFlow : long
-    {
-        Vertical,
-        Horizontal
-    }
-
-    [Native]
     public enum FSCalendarCellShape : long
     {
         Circle = 0,
@@ -86,20 +79,5 @@ namespace WenchaoD.FSCalendar
         Current,
         Next,
         NotFound = int.MaxValue
-    }
-
-    [Native]
-    public enum FSCalendarTransition : long
-    {
-        None,
-        MonthToWeek,
-        WeekToMonth
-    }
-
-    [Native]
-    public enum FSCalendarTransitionState : long
-    {
-        dle,
-        nProgress
     }
 }

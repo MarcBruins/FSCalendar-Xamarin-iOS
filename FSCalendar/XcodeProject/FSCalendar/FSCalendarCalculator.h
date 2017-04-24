@@ -13,11 +13,16 @@
 
 typedef NS_ENUM(NSUInteger, FSCalendarMonthPosition);
 
+struct FSCalendarCoordinate {
+    NSInteger row;
+    NSInteger column;
+};
+typedef struct FSCalendarCoordinate FSCalendarCoordinate;
+
 @interface FSCalendarCalculator : NSObject
 
 @property (weak  , nonatomic) FSCalendar *calendar;
 
-@property (assign, nonatomic) CGFloat monthHeight;
 @property (assign, nonatomic) CGFloat titleHeight;
 @property (assign, nonatomic) CGFloat subtitleHeight;
 
@@ -44,6 +49,7 @@ typedef NS_ENUM(NSUInteger, FSCalendarMonthPosition);
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
 
 - (FSCalendarMonthPosition)monthPositionForIndexPath:(NSIndexPath *)indexPath;
+- (FSCalendarCoordinate)coordinateForIndexPath:(NSIndexPath *)indexPath;
 
 - (void)reloadSections;
 

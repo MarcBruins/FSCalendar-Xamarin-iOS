@@ -117,7 +117,7 @@
 {
     if (!CGPointEqualToPoint(_titleOffset, titleOffset)) {
         _titleOffset = titleOffset;
-        [_calendar.collectionView.visibleCells makeObjectsPerformSelector:@selector(setNeedsLayout)];
+        [_calendar.visibleCells makeObjectsPerformSelector:@selector(setNeedsLayout)];
     }
 }
 
@@ -125,7 +125,7 @@
 {
     if (!CGPointEqualToPoint(_subtitleOffset, subtitleOffset)) {
         _subtitleOffset = subtitleOffset;
-        [_calendar.collectionView.visibleCells makeObjectsPerformSelector:@selector(setNeedsLayout)];
+        [_calendar.visibleCells makeObjectsPerformSelector:@selector(setNeedsLayout)];
     }
 }
 
@@ -133,7 +133,7 @@
 {
     if (!CGPointEqualToPoint(_imageOffset, imageOffset)) {
         _imageOffset = imageOffset;
-        [_calendar.collectionView.visibleCells makeObjectsPerformSelector:@selector(setNeedsLayout)];
+        [_calendar.visibleCells makeObjectsPerformSelector:@selector(setNeedsLayout)];
     }
 }
 
@@ -141,7 +141,7 @@
 {
     if (!CGPointEqualToPoint(_eventOffset, eventOffset)) {
         _eventOffset = eventOffset;
-        [_calendar.collectionView.visibleCells makeObjectsPerformSelector:@selector(setNeedsLayout)];
+        [_calendar.visibleCells makeObjectsPerformSelector:@selector(setNeedsLayout)];
     }
 }
 
@@ -408,8 +408,7 @@
 {
     if (_headerMinimumDissolvedAlpha != headerMinimumDissolvedAlpha) {
         _headerMinimumDissolvedAlpha = headerMinimumDissolvedAlpha;
-        [_calendar.calendarHeaderView.collectionView.visibleCells makeObjectsPerformSelector:@selector(setNeedsLayout)];
-        [_calendar.visibleStickyHeaders makeObjectsPerformSelector:@selector(setNeedsLayout)];
+        [self.calendar setNeedsConfigureAppearance];
     }
 }
 
@@ -491,6 +490,26 @@
 - (FSCalendarCellShape)cellShape
 {
     return self.borderRadius==1.0?FSCalendarCellShapeCircle:FSCalendarCellShapeRectangle;
+}
+
+- (void)setTitleTextSize:(CGFloat)titleTextSize
+{
+    self.titleFont = [UIFont fontWithName:self.titleFont.fontName size:titleTextSize];
+}
+
+- (void)setSubtitleTextSize:(CGFloat)subtitleTextSize
+{
+    self.subtitleFont = [UIFont fontWithName:self.subtitleFont.fontName size:subtitleTextSize];
+}
+
+- (void)setWeekdayTextSize:(CGFloat)weekdayTextSize
+{
+    self.weekdayFont = [UIFont fontWithName:self.weekdayFont.fontName size:weekdayTextSize];
+}
+
+- (void)setHeaderTitleTextSize:(CGFloat)headerTitleTextSize
+{
+    self.headerTitleFont = [UIFont fontWithName:self.headerTitleFont.fontName size:headerTitleTextSize];
 }
 
 - (void)invalidateAppearance

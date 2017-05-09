@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>FSCalendar</id>
+        <version>0.9.1</version>
+        <title>FSCalendar for Xamarin iOS</title>
+        <authors>Marc Bruins</authors>
+        <projectUrl>https://github.com/MarcBruins/FSCalendar-Xamarin-iOS</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A fully customizable iOS calendar library</description>
+        <language />
+    </metadata>
+    <files>
+        <file src="..\FSCalendar\bin\Release\FSCalendar.dll" target="lib\Xamarin.iOS10\FSCalendar.dll" />
+    </files>
+</package>
